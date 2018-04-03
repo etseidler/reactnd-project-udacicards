@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View, FlatList } from 'react-native'
+import { StyleSheet, View, FlatList } from 'react-native'
 import StatusBarWithHeight from './components/StatusBarWithHeight'
+import DeckListItem from './components/DeckListItem'
 
 export default function App() {
   return (
@@ -9,7 +10,7 @@ export default function App() {
       <FlatList
         data={Object.keys(tempCardData).map(name => tempCardData[name])}
         keyExtractor={item => item.title}
-        renderItem={({ item }) => <Text>{item.title}</Text>}
+        renderItem={({ item }) => <DeckListItem item={item} />}
       />
     </View>
   )
