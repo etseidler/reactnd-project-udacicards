@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
+import StatusBarWithHeight from './components/StatusBarWithHeight'
 
 export default function App() {
   return (
     <View style={styles.container}>
+      <StatusBarWithHeight />
       <FlatList
         data={Object.keys(tempCardData).map(name => tempCardData[name])}
         keyExtractor={item => item.title}
