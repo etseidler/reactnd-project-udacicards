@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 import StatusBarWithHeight from './components/StatusBarWithHeight'
 import DeckListItem from './components/DeckListItem'
-import { getDecks, setDefaultDecks } from './utils/helpers'
+import { getDecks } from './utils/helpers'
 
 export default class App extends Component {
   constructor() {
@@ -17,12 +17,9 @@ export default class App extends Component {
     }
   }
   componentDidMount() {
-    setDefaultDecks()
-      .then(() => {
-        getDecks().then((decks) => {
-          this.setState({ decks, isLoading: false })
-        })
-      })
+    getDecks().then((decks) => {
+      this.setState({ decks, isLoading: false })
+    })
   }
   render() {
     if (this.state.isLoading) {
