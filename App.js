@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
-  FlatList,
+  FlatList
 } from 'react-native'
 import StatusBarWithHeight from './components/StatusBarWithHeight'
 import DeckListItem from './components/DeckListItem'
@@ -13,7 +13,7 @@ export default class App extends Component {
     super()
 
     this.state = {
-      isLoading: true,
+      isLoading: true
     }
   }
   componentDidMount() {
@@ -47,6 +47,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 })

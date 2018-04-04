@@ -3,7 +3,7 @@ import {
   Text,
   View,
   StyleSheet,
-  Dimensions,
+  Dimensions
 } from 'react-native'
 import { gray } from '../utils/colors'
 
@@ -28,14 +28,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 15,
     paddingBottom: 15,
-    borderBottomWidth: 1,
+    borderBottomWidth: 1
   },
   title: {
     fontSize: 24,
-    flex: 1,
+    flex: 1
   },
   numQuestions: {
     color: gray,
-    fontSize: 16,
-  },
+    fontSize: 16
+  }
 })
