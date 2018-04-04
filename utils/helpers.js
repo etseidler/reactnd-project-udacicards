@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native'
 
-const ALL_DECKS = 'ALL_DECKS'
+const ALL_DECKS = 'udacicards:ALL_DECKS'
 
 export function setDefaultDecks() {
   return AsyncStorage.setItem(ALL_DECKS, JSON.stringify(defaultDeckData))
