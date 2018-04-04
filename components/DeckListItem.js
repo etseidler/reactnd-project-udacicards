@@ -1,5 +1,10 @@
 import React from 'react'
-import { Text, View, StyleSheet, Dimensions } from 'react-native'
+import {
+  Text,
+  View,
+  StyleSheet,
+  Dimensions,
+} from 'react-native'
 import { gray } from '../utils/colors'
 
 export default function DeckListItem({ item }) {

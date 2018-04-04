@@ -1,5 +1,9 @@
 import React from 'react'
-import { StyleSheet, View, FlatList } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  FlatList,
+} from 'react-native'
 import StatusBarWithHeight from './components/StatusBarWithHeight'
 import DeckListItem from './components/DeckListItem'
 
@@ -31,11 +35,11 @@ const tempCardData = {
     questions: [
       {
         question: 'What is React?',
-        answer: 'A library for managing user interfaces'
+        answer: 'A library for managing user interfaces',
       },
       {
         question: 'Where do you make Ajax requests in React?',
-        answer: 'The componentDidMount lifecycle event'
+        answer: 'The componentDidMount lifecycle event',
       },
     ],
   },
@@ -44,7 +48,7 @@ const tempCardData = {
     questions: [
       {
         question: 'What is a closure?',
-        answer: 'The combination of a function and the lexical environment within which that function was declared.'
+        answer: 'The combination of a function and the lexical environment within which that function was declared.',
       },
     ],
   },
