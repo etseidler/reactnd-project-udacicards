@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import {
   StyleSheet,
-  View,
-  FlatList
+  View
 } from 'react-native'
 import StatusBarWithHeight from './components/StatusBarWithHeight'
-import DeckListItem from './components/DeckListItem'
+import DeckList from './components/DeckList'
 import { getDecks } from './utils/helpers'
 
 export default class App extends Component {
