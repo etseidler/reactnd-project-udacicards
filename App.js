@@ -1,48 +1,35 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
-  StyleSheet,
   View
 } from 'react-native'
+import { TabNavigator } from 'react-navigation'
+import { Ionicons } from '@expo/vector-icons'
 import StatusBarWithHeight from './components/StatusBarWithHeight'
 import DeckList from './components/DeckList'
-import { getDecks } from './utils/helpers'
+import NewDeck from './components/NewDeck'
 
-export default class App extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      isLoading: true
-    }
-  }
-  componentDidMount() {
-    getDecks().then((decks) => {
-      this.setState({ decks, isLoading: false })
-    })
-  }
-  render() {
-    if (this.state.isLoading) {
-      return null
-    }
-    const { decks } = this.state
-    return (
-      <View style={styles.container}>
-        <StatusBarWithHeight />
-        <FlatList
-          data={Object.keys(decks).map(name => decks[name])}
-          keyExtractor={item => item.title}
-          renderItem={({ item }) => <DeckListItem item={item} />}
-        />
-      </View>
-    )
-  }
+export default function App() {
+  return (
+    <View style={{ flex: 1 }}>
+      <StatusBarWithHeight />
+      <MainNavigator />
+    </View>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+const MainNavigator = TabNavigator({
+  DeckList: {
+    screen: DeckList,
+    navigationOptions: {
+      tabBarLabel: 'Decks',
+      tabBarIcon: ({ tintColor }) => <Ionicons name="ios-list" size={30} color={tintColor} />
+    }
+  },
+  NewDeck: {
+    screen: NewDeck,
+    navigationOptions: {
+      tabBarLabel: 'New Deck',
+      tabBarIcon: ({ tintColor }) => <Ionicons name="ios-add" size={30} color={tintColor} />
+    }
   }
 })
