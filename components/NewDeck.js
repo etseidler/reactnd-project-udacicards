@@ -12,11 +12,7 @@ import { getDeck, saveDeckTitle } from '../utils/helpers'
 const INPUT_MAX_LENGTH = 40
 
 export default class NewDeck extends Component {
-  constructor() {
-    super()
-
-    this.state = { text: '' }
-  }
+  state = { text: '' }
   onSubmit = () => {
     const deckName = this.state.text.trim()
     getDeck(deckName)
