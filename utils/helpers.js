@@ -11,6 +11,28 @@ export function getDecks() {
     .then(JSON.parse)
 }
 
+export function getDeck(deckName) {
+  return AsyncStorage.getItem(ALL_DECKS)
+    .then(JSON.parse)
+    .then(data => data[deckName])
+}
+
+export function saveDeckTitle(deckName) {
+  return AsyncStorage.getItem(ALL_DECKS)
+    .then(JSON.parse)
+    .then((data) => {
+      const updatedData = {
+        ...data,
+        [deckName]: {
+          title: deckName,
+          questions: [],
+          answers: []
+        }
+      }
+      return AsyncStorage.setItem(ALL_DECKS, JSON.stringify(updatedData))
+    })
+}
+
 const defaultDeckData = {
   React: {
     title: 'React',

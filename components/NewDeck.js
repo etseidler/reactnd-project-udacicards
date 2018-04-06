@@ -4,8 +4,10 @@ import {
   View,
   TextInput,
   StyleSheet,
-  Button
+  Button,
+  Alert
 } from 'react-native'
+import { getDeck, saveDeckTitle } from '../utils/helpers'
 
 const INPUT_MAX_LENGTH = 40
 
@@ -14,6 +16,20 @@ export default class NewDeck extends Component {
     super()
 
     this.state = { text: '' }
+  }
+  onSubmit = () => {
+    const deckName = this.state.text.trim()
+    getDeck(deckName)
+      .then((data) => {
+        if (data) {
+          Alert.alert('A deck with that name already exists')
+          return
+        }
+
+        this.setState({ text: '' })
+        saveDeckTitle(deckName)
+          .then(alert('return to main view now'))
+      })
   }
   render() {
     return (
@@ -32,7 +48,7 @@ export default class NewDeck extends Component {
           style={{ marginTop: 40 }}
           title="Submit"
           disabled={this.state.text === ''}
-          onPress={() => alert(this.state.text)}
+          onPress={this.onSubmit}
         />
       </View>
     )
