@@ -43,7 +43,7 @@ export default class NewDeck extends Component {
         <Button
           style={{ marginTop: 40 }}
           title="Submit"
-          disabled={this.state.text === ''}
+          disabled={this.state.text.trim() === ''}
           onPress={this.onSubmit}
         />
       </View>
