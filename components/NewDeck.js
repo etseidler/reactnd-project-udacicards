@@ -24,7 +24,7 @@ export default class NewDeck extends Component {
 
         this.setState({ text: '' })
         saveDeckTitle(deckName)
-          .then(alert('return to main view now'))
+          .then(() => this.props.navigation.navigate('DeckList', { reloadData: true }))
       })
   }
   render() {

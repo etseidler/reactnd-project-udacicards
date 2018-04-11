@@ -13,6 +13,14 @@ export default class DeckList extends Component {
     }
   }
   componentDidMount() {
+    this.loadDecks()
+  }
+  componentWillReceiveProps({ navigation: { state: { params: { reloadData = false } = {} } = {} } = {} }) { // eslint-disable-line max-len
+    if (reloadData) {
+      this.loadDecks()
+    }
+  }
+  loadDecks = () => {
     getDecks().then((decks) => {
       this.setState({ decks, isLoading: false })
     })
