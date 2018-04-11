@@ -2,11 +2,12 @@ import React from 'react'
 import {
   View
 } from 'react-native'
-import { TabNavigator } from 'react-navigation'
+import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons'
 import StatusBarWithHeight from './components/StatusBarWithHeight'
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
+import Deck from './components/Deck'
 
 export default function App() {
   return (
@@ -17,7 +18,7 @@ export default function App() {
   )
 }
 
-const MainNavigator = TabNavigator({
+const Tabs = TabNavigator({
   DeckList: {
     screen: DeckList,
     navigationOptions: {
@@ -31,5 +32,18 @@ const MainNavigator = TabNavigator({
       tabBarLabel: 'New Deck',
       tabBarIcon: ({ tintColor }) => <Ionicons name="ios-add" size={30} color={tintColor} />
     }
+  }
+}, {
+  navigationOptions: {
+    header: null
+  }
+})
+
+const MainNavigator = StackNavigator({
+  Home: {
+    screen: Tabs
+  },
+  Deck: {
+    screen: Deck
   }
 })

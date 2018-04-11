@@ -3,20 +3,25 @@ import {
   Text,
   View,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  TouchableOpacity
 } from 'react-native'
 import { gray } from '../utils/colors'
 
-export default function DeckListItem({ item }) {
+export default function DeckListItem({ item, navigation }) {
   return (
-    <View style={[styles.container, { width: Dimensions.get('window').width }]}>
-      <Text style={styles.title}>{item.title}</Text>
-      <Text
-        style={styles.numQuestions}
-      >
-        {item.questions.length} card{item.questions.length === 1 ? '' : 's'}
-      </Text>
-    </View>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Deck', { entryId: item.title })}
+    >
+      <View style={[styles.container, { width: Dimensions.get('window').width }]}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text
+          style={styles.numQuestions}
+        >
+          {item.questions.length} card{item.questions.length === 1 ? '' : 's'}
+        </Text>
+      </View>
+    </TouchableOpacity>
   )
 }
 

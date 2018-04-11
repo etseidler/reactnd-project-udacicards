@@ -30,11 +30,12 @@ export default class DeckList extends Component {
       return <View><Text>Loading...</Text></View>
     }
     const { decks } = this.state
+    const { navigation } = this.props
     return (
       <FlatList
         data={Object.keys(decks).map(name => decks[name])}
         keyExtractor={item => item.title}
-        renderItem={({ item }) => <DeckListItem item={item} />}
+        renderItem={({ item }) => <DeckListItem item={item} navigation={navigation} />}
       />
     )
   }
