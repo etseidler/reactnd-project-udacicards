@@ -7,7 +7,7 @@ export default function DeckListItem({ item, navigation }) {
     <TouchableOpacity
       onPress={() => navigation.navigate('Deck', { entryId: item.title })}
     >
-      <DeckSummary title={item.title} questions={item.questions} />
+      <DeckSummary deck={item} />
     </TouchableOpacity>
   )
 }

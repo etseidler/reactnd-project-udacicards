@@ -5,15 +5,18 @@ import {
   Dimensions,
   StyleSheet
 } from 'react-native'
-import { gray } from '../utils/colors'
+import { gray, white } from '../utils/colors'
 
-export default function DeckSummary({ title, questions }) {
+export default function DeckSummary(props) {
+  const {
+    deck: { title, questions },
+    titleStyle = {},
+    numQuestionsStyle = {}
+  } = props
   return (
     <View style={[styles.container, { width: Dimensions.get('window').width }]}>
-      <Text style={styles.title}>{title}</Text>
-      <Text
-        style={styles.numQuestions}
-      >
+      <Text style={[styles.title, titleStyle]}>{title}</Text>
+      <Text style={[styles.numQuestions, numQuestionsStyle]}>
         {questions.length} card{questions.length === 1 ? '' : 's'}
       </Text>
     </View>
@@ -26,13 +29,14 @@ const styles = StyleSheet.create({
     width: 150,
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     paddingTop: 15,
     paddingBottom: 15,
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    backgroundColor: white
   },
   title: {
-    fontSize: 24,
-    flex: 1
+    fontSize: 24
   },
   numQuestions: {
     color: gray,

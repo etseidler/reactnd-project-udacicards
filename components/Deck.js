@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
-import { white } from '../utils/colors'
+import DeckSummary from './DeckSummary'
+import { getDeck } from '../utils/helpers'
 
 class Deck extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -9,11 +9,29 @@ class Deck extends Component {
       title: entryId
     }
   }
+  constructor() {
+    super()
+
+    this.state = {
+      deck: null
+    }
+  }
+  componentDidMount() {
+    const deckName = this.props.navigation.state.params.entryId;
+    getDeck(deckName).then((deck) => {
+      this.setState({ deck })
+    })
+  }
   render() {
+    if (!this.state.deck) {
+      return null
+    }
     return (
-      <View style={{ backgroundColor: white, flex: 1 }}>
-        <Text>Here in the deck view</Text>
-      </View>
+      <DeckSummary
+        deck={this.state.deck}
+        titleStyle={{ fontSize: 36 }}
+        numQuestionsStyle={{ fontSize: 24 }}
+      />
     )
   }
 }
