@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { View, Button } from 'react-native'
 import DeckSummary from './DeckSummary'
 import { getDeck } from '../utils/helpers'
+import { white, blue } from '../utils/colors'
 
 class Deck extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -27,11 +29,26 @@ class Deck extends Component {
       return null
     }
     return (
-      <DeckSummary
-        deck={this.state.deck}
-        titleStyle={{ fontSize: 36 }}
-        numQuestionsStyle={{ fontSize: 24 }}
-      />
+      <View style={{ backgroundColor: white, flex: 1, justifyContent: 'space-around' }}>
+        <DeckSummary
+          deck={this.state.deck}
+          containerStyle={{ flex: 2, borderBottomWidth: 0 }}
+          titleStyle={{ fontSize: 36, marginBottom: 5 }}
+          numQuestionsStyle={{ fontSize: 24 }}
+        />
+        <View style={{ flex: 1, justifyContent: 'space-between' }}>
+          <Button
+            title="Add Card"
+            color={blue}
+            onPress={() => {}}
+          />
+          <Button
+            title="Start Quiz"
+            onPress={() => {}}
+          />
+          <View />
+        </View>
+      </View>
     )
   }
 }

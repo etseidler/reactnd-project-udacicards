@@ -11,10 +11,17 @@ export default function DeckSummary(props) {
   const {
     deck: { title, questions },
     titleStyle = {},
-    numQuestionsStyle = {}
+    numQuestionsStyle = {},
+    containerStyle = {}
   } = props
   return (
-    <View style={[styles.container, { width: Dimensions.get('window').width }]}>
+    <View
+      style={[
+        styles.container,
+        { width: Dimensions.get('window').width },
+        containerStyle
+      ]}
+    >
       <Text style={[styles.title, titleStyle]}>{title}</Text>
       <Text style={[styles.numQuestions, numQuestionsStyle]}>
         {questions.length} card{questions.length === 1 ? '' : 's'}
@@ -25,7 +32,6 @@ export default function DeckSummary(props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     width: 150,
     flexDirection: 'column',
     alignItems: 'center',
