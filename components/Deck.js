@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Button } from 'react-native'
 import DeckSummary from './DeckSummary'
-import { getDeck } from '../utils/helpers'
+import { getDeck, removeDeck } from '../utils/helpers'
 import { white, blue, red } from '../utils/colors'
 
 class Deck extends Component {
@@ -23,6 +23,10 @@ class Deck extends Component {
     getDeck(deckName).then((deck) => {
       this.setState({ deck })
     })
+  }
+  onDeleteDeck = () => {
+    removeDeck(this.state.deck.title)
+      .then(() => this.props.navigation.goBack())
   }
   render() {
     if (!this.state.deck) {
@@ -48,7 +52,7 @@ class Deck extends Component {
           />
           <Button
             title="Delete Deck"
-            onPress={() => {}}
+            onPress={this.onDeleteDeck}
             color={red}
           />
           <View />

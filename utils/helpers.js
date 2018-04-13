@@ -17,6 +17,16 @@ export function getDeck(deckName) {
     .then(data => data[deckName])
 }
 
+export function removeDeck(deckName) {
+  return AsyncStorage.getItem(ALL_DECKS)
+    .then(JSON.parse)
+    .then((data) => {
+      const updatedData = data
+      delete updatedData[deckName]
+      AsyncStorage.setItem(ALL_DECKS, JSON.stringify(updatedData))
+    })
+}
+
 export function saveDeckTitle(deckName) {
   return AsyncStorage.getItem(ALL_DECKS)
     .then(JSON.parse)
