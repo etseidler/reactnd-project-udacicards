@@ -8,6 +8,7 @@ import StatusBarWithHeight from './components/StatusBarWithHeight'
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
 import Deck from './components/Deck'
+import { white } from './utils/colors'
 
 export default function App() {
   return (
@@ -45,5 +46,11 @@ const MainNavigator = StackNavigator({
   },
   Deck: {
     screen: Deck
+  }
+}, {
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor: white
+    }
   }
 })

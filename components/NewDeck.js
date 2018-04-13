@@ -8,6 +8,7 @@ import {
   Alert
 } from 'react-native'
 import { getDeck, saveDeckTitle } from '../utils/helpers'
+import { white } from '../utils/colors'
 
 const INPUT_MAX_LENGTH = 40
 
@@ -55,7 +56,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'stretch',
-    padding: 40
+    padding: 40,
+    backgroundColor: white
   },
   text: {
     fontSize: 42,

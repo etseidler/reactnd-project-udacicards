@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
+import { white } from '../utils/colors'
 
 class Deck extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -10,7 +11,9 @@ class Deck extends Component {
   }
   render() {
     return (
-      <View><Text>Here in the deck view</Text></View>
+      <View style={{ backgroundColor: white, flex: 1 }}>
+        <Text>Here in the deck view</Text>
+      </View>
     )
   }
 }
