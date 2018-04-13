@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Button } from 'react-native'
 import DeckSummary from './DeckSummary'
 import { getDeck } from '../utils/helpers'
-import { white, blue } from '../utils/colors'
+import { white, blue, red } from '../utils/colors'
 
 class Deck extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -45,6 +45,11 @@ class Deck extends Component {
           <Button
             title="Start Quiz"
             onPress={() => {}}
+          />
+          <Button
+            title="Delete Deck"
+            onPress={() => {}}
+            color={red}
           />
           <View />
         </View>
