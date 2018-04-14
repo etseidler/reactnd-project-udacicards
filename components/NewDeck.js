@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import {
   Text,
   View,
-  TextInput,
   StyleSheet,
   Button,
   Alert
 } from 'react-native'
+import CustomTextInput from './CustomTextInput'
 import { getDeck, saveDeckTitle } from '../utils/helpers'
 import { white } from '../utils/colors'
 
@@ -32,13 +32,12 @@ export default class NewDeck extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>What is the title of your new deck?</Text>
-        <TextInput
+        <CustomTextInput
           style={styles.textInput}
           placeholder="Deck Title"
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
           autoFocus
-          autoCorrect={false}
           maxLength={INPUT_MAX_LENGTH}
         />
         <Button
