@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons'
 import StatusBarWithHeight from './components/StatusBarWithHeight'
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
+import NewQuestion from './components/NewQuestion'
 import Deck from './components/Deck'
 import { white } from './utils/colors'
 
@@ -46,6 +47,9 @@ const MainNavigator = StackNavigator({
   },
   Deck: {
     screen: Deck
+  },
+  NewQuestion: {
+    screen: NewQuestion
   }
 }, {
   navigationOptions: {

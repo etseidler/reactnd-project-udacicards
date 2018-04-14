@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Button } from 'react-native'
 import DeckSummary from './DeckSummary'
-import { getDeck, removeDeck, addCardToDeck } from '../utils/helpers'
+import { getDeck, removeDeck } from '../utils/helpers'
 import { white, blue, red } from '../utils/colors'
 
 class Deck extends Component {
@@ -32,6 +32,7 @@ class Deck extends Component {
     if (!this.state.deck) {
       return null
     }
+    const { navigate } = this.props.navigation
     return (
       <View style={{ backgroundColor: white, flex: 1, justifyContent: 'space-around' }}>
         <DeckSummary
@@ -44,7 +45,7 @@ class Deck extends Component {
           <Button
             title="Add Card"
             color={blue}
-            onPress={() => addCardToDeck(this.state.deck.title, { question: 'question foo', answer: 'answer foo' })}
+            onPress={() => navigate('NewQuestion')}
           />
           <Button
             title="Start Quiz"
