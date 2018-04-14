@@ -45,7 +45,7 @@ class Deck extends Component {
           <Button
             title="Add Card"
             color={blue}
-            onPress={() => navigate('NewQuestion')}
+            onPress={() => navigate('NewQuestion', { deckName: this.state.deck.title })}
           />
           <Button
             title="Start Quiz"
