@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Button } from 'react-native'
 import DeckSummary from './DeckSummary'
-import { getDeck, removeDeck } from '../utils/helpers'
+import { getDeck, removeDeck, addCardToDeck } from '../utils/helpers'
 import { white, blue, red } from '../utils/colors'
 
 class Deck extends Component {
@@ -44,7 +44,7 @@ class Deck extends Component {
           <Button
             title="Add Card"
             color={blue}
-            onPress={() => {}}
+            onPress={() => addCardToDeck(this.state.deck.title, { question: 'question foo', answer: 'answer foo' })}
           />
           <Button
             title="Start Quiz"
