@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Button } from 'react-native'
+import { View, StyleSheet, Button, Text } from 'react-native'
 import CustomTextInput from './CustomTextInput'
-import { white } from '../utils/colors'
+import { white, green } from '../utils/colors'
 import { addCardToDeck } from '../utils/helpers'
 
 const QUESTION_MAX_LENGTH = 100
 const ANSWER_MAX_LENGTH = 100
+const SUCCESS_DISPLAY_TIME = 3000
 
 export default class NewQuestion extends Component {
   static navigationOptions = () => ({
@@ -16,16 +17,26 @@ export default class NewQuestion extends Component {
 
     this.state = {
       question: '',
-      answer: ''
+      answer: '',
+      successVisible: false
     }
   }
   onSubmit = (deckName) => {
     const { question, answer } = this.state
     addCardToDeck(deckName, { question, answer })
-      .then(alert(`added card q: ${question}, a: ${answer} to deck ${deckName}`))
+      .then(() => {
+        this.setState({
+          successVisible: true,
+          question: '',
+          answer: ''
+        })
+        setTimeout(() => {
+          this.setState({ successVisible: false })
+        }, SUCCESS_DISPLAY_TIME)
+      })
   }
   render() {
-    const { question, answer } = this.state
+    const { question, answer, successVisible } = this.state
     const { deckName } = this.props.navigation.state.params
     return (
       <View style={styles.container}>
@@ -49,6 +60,13 @@ export default class NewQuestion extends Component {
           disabled={question.trim() === '' || answer.trim() === ''}
           onPress={() => this.onSubmit(deckName)}
         />
+        {successVisible &&
+          <View style={styles.cardAddedContainer}>
+            <Text style={styles.cardAdded}>
+              Card Added
+            </Text>
+          </View>
+        }
       </View>
     )
   }
@@ -68,5 +86,15 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginBottom: 30
+  },
+  cardAddedContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  cardAdded: {
+    color: green,
+    fontSize: 18,
+    paddingTop: 10
   }
 })
