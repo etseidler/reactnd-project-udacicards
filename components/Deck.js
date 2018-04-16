@@ -23,10 +23,21 @@ class Deck extends Component {
     getDeck(deckName).then((deck) => {
       this.setState({ deck })
     })
+    this.subs = [
+      this.props.navigation.addListener('willFocus', () => this.loadDeck(deckName))
+    ];
+  }
+  componentWillUnmount() {
+    this.subs.forEach(sub => sub.remove());
   }
   onDeleteDeck = () => {
     removeDeck(this.state.deck.title)
       .then(() => this.props.navigation.goBack())
+  }
+  loadDeck = (deckName) => {
+    getDeck(deckName).then((deck) => {
+      this.setState({ deck })
+    })
   }
   render() {
     if (!this.state.deck) {
