@@ -57,7 +57,10 @@ export default class NewQuestion extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: white
+    backgroundColor: white,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 20
   },
   textInput: {
     fontSize: 16,
