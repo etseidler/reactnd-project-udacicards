@@ -38,6 +38,8 @@ export default class Quiz extends Component {
     }
     const { deck, deck: { questions }, currentQuestionIndex, showingQuestion } = this.state
     const currentQuestion = deck.questions[currentQuestionIndex]
+    const currentQuestionNumber = currentQuestionIndex + 1
+    const numQuestions = questions.length
     return (
       <View style={styles.container}>
         {questions.length === 0
@@ -48,6 +50,9 @@ export default class Quiz extends Component {
           )
           : (
             <React.Fragment>
+              <Text style={styles.progress}>
+                {`${currentQuestionNumber} / ${numQuestions}`}
+              </Text>
               <Text style={styles.qaText}>
                 {showingQuestion ? currentQuestion.question : currentQuestion.answer}
               </Text>
@@ -85,5 +90,11 @@ const styles = StyleSheet.create({
   },
   qaText: {
     fontSize: 36
+  },
+  progress: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    fontSize: 18
   }
 })
