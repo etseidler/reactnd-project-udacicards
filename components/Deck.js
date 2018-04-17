@@ -60,7 +60,7 @@ class Deck extends Component {
           />
           <Button
             title="Start Quiz"
-            onPress={() => {}}
+            onPress={() => navigate('Quiz', { deckName: this.state.deck.title })}
           />
           <Button
             title="Delete Deck"

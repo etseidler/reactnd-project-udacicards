@@ -9,6 +9,7 @@ import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
 import NewQuestion from './components/NewQuestion'
 import Deck from './components/Deck'
+import Quiz from './components/Quiz'
 import { white } from './utils/colors'
 
 export default function App() {
@@ -50,6 +51,9 @@ const MainNavigator = StackNavigator({
   },
   NewQuestion: {
     screen: NewQuestion
+  },
+  Quiz: {
+    screen: Quiz
   }
 }, {
   navigationOptions: {
