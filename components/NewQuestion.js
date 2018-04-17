@@ -51,6 +51,7 @@ export default class NewQuestion extends Component {
           onChangeText={questionText => this.setState({ question: questionText })}
           value={question}
           maxLength={QUESTION_MAX_LENGTH}
+          autoFocus
         />
         <CustomTextInput
           style={styles.textInput}

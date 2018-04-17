@@ -2,7 +2,7 @@ import React from 'react'
 import { TextInput } from 'react-native'
 
 export default function CustomTextInput(props) {
-  const { style, placeholder, onChangeText, value, maxLength, autoFocus = false } = props
+  const { style, placeholder, onChangeText, value, maxLength, autoFocus } = props
   return (
     <TextInput
       style={style}
