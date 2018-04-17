@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
-import { getDeck } from '../utils/helpers'
+import { getDeck, setLocalNotification, clearLocalNotifications } from '../utils/helpers'
 import { white, red, green, blue } from '../utils/colors'
 
 export default class Quiz extends Component {
@@ -40,6 +40,9 @@ export default class Quiz extends Component {
       showingQuestion: true
     })
   }
+  disableNotificationForToday = () => {
+    clearLocalNotifications().then(setLocalNotification)
+  }
   render() {
     if (!this.state.deck) {
       return null
@@ -63,6 +66,7 @@ export default class Quiz extends Component {
       )
     }
     else if (currentQuestionIndex === numQuestions) {
+      this.disableNotificationForToday()
       const scorePercentage = Math.round((numCorrectQuestions / numQuestions) * 100)
       innerContent = (
         <React.Fragment>

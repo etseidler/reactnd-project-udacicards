@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   View
 } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons'
+import { setLocalNotification } from './utils/helpers'
 import StatusBarWithHeight from './components/StatusBarWithHeight'
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
@@ -12,13 +13,18 @@ import Deck from './components/Deck'
 import Quiz from './components/Quiz'
 import { white } from './utils/colors'
 
-export default function App() {
-  return (
-    <View style={{ flex: 1 }}>
-      <StatusBarWithHeight />
-      <MainNavigator />
-    </View>
-  )
+export default class App extends Component {
+  componentWillMount() {
+    setLocalNotification()
+  }
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+        <StatusBarWithHeight />
+        <MainNavigator />
+      </View>
+    )
+  }
 }
 
 const Tabs = TabNavigator({
