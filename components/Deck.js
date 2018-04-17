@@ -25,7 +25,7 @@ class Deck extends Component {
     })
     this.subs = [
       this.props.navigation.addListener('willFocus', () => this.loadDeck(deckName))
-    ];
+    ]
   }
   componentWillUnmount() {
     this.subs.forEach(sub => sub.remove());

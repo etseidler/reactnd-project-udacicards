@@ -16,7 +16,7 @@ export default class DeckList extends Component {
     // see https://github.com/react-navigation/react-navigation/pull/3345#issuecomment-365281777
     this.subs = [
       this.props.navigation.addListener('willFocus', this.loadDecks)
-    ];
+    ]
   }
   componentWillUnmount() {
     this.subs.forEach(sub => sub.remove());
