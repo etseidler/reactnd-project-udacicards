@@ -35,8 +35,7 @@ export function addCardToDeck(deckName, { question, answer }) {
         ...data,
         [deckName]: {
           ...data[deckName],
-          questions: [...data[deckName].questions, question],
-          answers: [...data[deckName].answers, answer]
+          questions: [...data[deckName].questions, { question, answer }]
         }
       }
       return AsyncStorage.setItem(ALL_DECKS, JSON.stringify(updatedData))
@@ -51,8 +50,7 @@ export function saveDeckTitle(deckName) {
         ...data,
         [deckName]: {
           title: deckName,
-          questions: [],
-          answers: []
+          questions: []
         }
       }
       return AsyncStorage.setItem(ALL_DECKS, JSON.stringify(updatedData))
