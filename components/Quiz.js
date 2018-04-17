@@ -49,6 +49,9 @@ export default class Quiz extends Component {
         </Text>
       )
     }
+    else if (currentQuestionIndex === numQuestions) {
+      innerContent = <Text>You are done with the quiz!</Text>
+    }
     else {
       innerContent = (
         <React.Fragment>
