@@ -44,7 +44,13 @@ export default class Quiz extends Component {
     if (!this.state.deck) {
       return null
     }
-    const { deck, deck: { questions }, currentQuestionIndex, showingQuestion, numCorrectQuestions } = this.state
+    const {
+      deck,
+      deck: { questions },
+      currentQuestionIndex,
+      showingQuestion,
+      numCorrectQuestions
+    } = this.state
     const currentQuestion = deck.questions[currentQuestionIndex]
     const currentQuestionNumber = currentQuestionIndex + 1
     const numQuestions = questions.length
