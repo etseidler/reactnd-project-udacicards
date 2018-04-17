@@ -14,7 +14,7 @@ export function getDecks() {
 export function getDeck(deckName) {
   return AsyncStorage.getItem(ALL_DECKS)
     .then(JSON.parse)
-    .then(data => data[deckName])
+    .then(data => data && data[deckName])
 }
 
 export function removeDeck(deckName) {
