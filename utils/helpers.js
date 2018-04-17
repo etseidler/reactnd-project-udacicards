@@ -2,10 +2,6 @@ import { AsyncStorage } from 'react-native'
 
 const ALL_DECKS = 'udacicards:ALL_DECKS'
 
-export function setDefaultDecks() {
-  return AsyncStorage.setItem(ALL_DECKS, JSON.stringify(defaultDeckData))
-}
-
 export function getDecks() {
   return AsyncStorage.getItem(ALL_DECKS)
     .then(JSON.parse)
@@ -55,6 +51,10 @@ export function saveDeckTitle(deckName) {
       }
       return AsyncStorage.setItem(ALL_DECKS, JSON.stringify(updatedData))
     })
+}
+
+export function setDefaultDecks() {
+  return AsyncStorage.setItem(ALL_DECKS, JSON.stringify(defaultDeckData))
 }
 
 const defaultDeckData = {
