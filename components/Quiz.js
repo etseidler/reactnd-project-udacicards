@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
 import { getDeck } from '../utils/helpers'
-import { white, red, green } from '../utils/colors'
+import { white, red, green, blue } from '../utils/colors'
 
 export default class Quiz extends Component {
   static navigationOptions = () => ({ title: 'Quiz' })
@@ -37,7 +37,7 @@ export default class Quiz extends Component {
     if (!this.state.deck) {
       return null
     }
-    const { deck, deck: { questions }, currentQuestionIndex, showingQuestion } = this.state
+    const { deck, deck: { questions }, currentQuestionIndex, showingQuestion, numCorrectQuestions } = this.state
     const currentQuestion = deck.questions[currentQuestionIndex]
     const currentQuestionNumber = currentQuestionIndex + 1
     const numQuestions = questions.length
@@ -50,7 +50,22 @@ export default class Quiz extends Component {
       )
     }
     else if (currentQuestionIndex === numQuestions) {
-      innerContent = <Text>You are done with the quiz!</Text>
+      const scorePercentage = Math.round((numCorrectQuestions / numQuestions) * 100)
+      innerContent = (
+        <React.Fragment>
+          <Text>You completed the quiz!</Text>
+          <Text>{`Your score is ${scorePercentage}%`}</Text>
+          <Button
+            title="Restart Quiz"
+            color={blue}
+            onPress={() => {}}
+          />
+          <Button
+            title="Back to Deck"
+            onPress={() => {}}
+          />
+        </React.Fragment>
+      )
     }
     else {
       innerContent = (
