@@ -33,6 +33,13 @@ export default class Quiz extends Component {
       showingQuestion: !prevState.showingQuestion
     }))
   }
+  restartQuiz = () => {
+    this.setState({
+      currentQuestionIndex: 0,
+      numCorrectQuestions: 0,
+      showingQuestion: true
+    })
+  }
   render() {
     if (!this.state.deck) {
       return null
@@ -58,11 +65,11 @@ export default class Quiz extends Component {
           <Button
             title="Restart Quiz"
             color={blue}
-            onPress={() => {}}
+            onPress={this.restartQuiz}
           />
           <Button
             title="Back to Deck"
-            onPress={() => {}}
+            onPress={() => this.props.navigation.goBack()}
           />
         </React.Fragment>
       )
