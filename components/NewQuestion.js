@@ -20,6 +20,11 @@ export default class NewQuestion extends Component {
       answer: '',
       successVisible: false
     }
+    this.timers = []
+  }
+  componentWillUnmount() {
+    this.timers.forEach(timer => clearTimeout(timer))
+    this.timers = []
   }
   onSubmit = (deckName) => {
     const { question, answer } = this.state
@@ -30,9 +35,9 @@ export default class NewQuestion extends Component {
           question: '',
           answer: ''
         })
-        setTimeout(() => {
+        this.timers.push(setTimeout(() => {
           this.setState({ successVisible: false })
-        }, SUCCESS_DISPLAY_TIME)
+        }, SUCCESS_DISPLAY_TIME))
       })
   }
   render() {
