@@ -41,39 +41,44 @@ export default class Quiz extends Component {
     const currentQuestion = deck.questions[currentQuestionIndex]
     const currentQuestionNumber = currentQuestionIndex + 1
     const numQuestions = questions.length
+    let innerContent;
+    if (numQuestions === 0) {
+      innerContent = (
+        <Text style={styles.atLeastOneQuestion}>
+          You must have at least one question to take the quiz!
+        </Text>
+      )
+    }
+    else {
+      innerContent = (
+        <React.Fragment>
+          <Text style={styles.progress}>
+            {`${currentQuestionNumber} / ${numQuestions}`}
+          </Text>
+          <Text style={styles.qaText}>
+            {showingQuestion ? currentQuestion.question : currentQuestion.answer}
+          </Text>
+          <Button
+            title={showingQuestion ? 'Show Answer' : 'Show Question'}
+            onPress={() => this.toggleQuestionAnswer()}
+          />
+          <Button
+            title="Correct"
+            color={green}
+            onPress={() => this.moveToNextQuestion(true)}
+          />
+          <Button
+            title="Incorrect"
+            color={red}
+            onPress={() => this.moveToNextQuestion(false)}
+          />
+        </React.Fragment>
+      )
+    }
+
     return (
       <View style={styles.container}>
-        {questions.length === 0
-          ? (
-            <Text style={styles.atLeastOneQuestion}>
-              You must have at least one question to take the quiz!
-            </Text>
-          )
-          : (
-            <React.Fragment>
-              <Text style={styles.progress}>
-                {`${currentQuestionNumber} / ${numQuestions}`}
-              </Text>
-              <Text style={styles.qaText}>
-                {showingQuestion ? currentQuestion.question : currentQuestion.answer}
-              </Text>
-              <Button
-                title={showingQuestion ? 'Show Answer' : 'Show Question'}
-                onPress={() => this.toggleQuestionAnswer()}
-              />
-              <Button
-                title="Correct"
-                color={green}
-                onPress={() => this.moveToNextQuestion(true)}
-              />
-              <Button
-                title="Incorrect"
-                color={red}
-                onPress={() => this.moveToNextQuestion(false)}
-              />
-            </React.Fragment>
-          )
-        }
+        {innerContent}
       </View>
     )
   }
