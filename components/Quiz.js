@@ -22,9 +22,14 @@ export default class Quiz extends Component {
     if (!this.state.deck) {
       return null
     }
-    const { title } = this.state.deck
+    const { questions } = this.state.deck
     return (
-      <View style={styles.container}><Text>{`Here is the Quiz View for ${title}!`}</Text></View>
+      <View style={styles.container}>
+        {questions.length === 0
+          ? <Text style={styles.atLeastOneQuestion}>You must have at least one question to take the quiz!</Text>
+          : <Text>Start questions here</Text>
+        }
+      </View>
     )
   }
 }
@@ -32,6 +37,11 @@ export default class Quiz extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: white,
-    flex: 1
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  atLeastOneQuestion: {
+    fontSize: 28
   }
 })
