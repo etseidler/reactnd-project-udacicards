@@ -11,7 +11,8 @@ export default class Quiz extends Component {
     this.state = {
       deck: null,
       currentQuestionIndex: null,
-      numCorrectQuestions: 0
+      numCorrectQuestions: 0,
+      showingQuestion: true
     }
   }
   componentDidMount() {
@@ -26,11 +27,16 @@ export default class Quiz extends Component {
       currentQuestionIndex: prevState.currentQuestionIndex + 1
     }))
   }
+  toggleQuestionAnswer = () => {
+    this.setState(prevState => ({
+      showingQuestion: !prevState.showingQuestion
+    }))
+  }
   render() {
     if (!this.state.deck) {
       return null
     }
-    const { deck, deck: { questions }, currentQuestionIndex } = this.state
+    const { deck, deck: { questions }, currentQuestionIndex, showingQuestion } = this.state
     const currentQuestion = deck.questions[currentQuestionIndex]
     return (
       <View style={styles.container}>
@@ -42,7 +48,13 @@ export default class Quiz extends Component {
           )
           : (
             <React.Fragment>
-              <Text style={styles.questionTitle}>{currentQuestion.question}</Text>
+              <Text style={styles.qaText}>
+                {showingQuestion ? currentQuestion.question : currentQuestion.answer}
+              </Text>
+              <Button
+                title={showingQuestion ? 'Show Answer' : 'Show Question'}
+                onPress={() => this.toggleQuestionAnswer()}
+              />
               <Button
                 title="Correct"
                 color={green}
@@ -71,7 +83,7 @@ const styles = StyleSheet.create({
   atLeastOneQuestion: {
     fontSize: 28
   },
-  questionTitle: {
+  qaText: {
     fontSize: 36
   }
 })
