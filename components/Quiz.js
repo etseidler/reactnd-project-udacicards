@@ -24,7 +24,8 @@ export default class Quiz extends Component {
   moveToNextQuestion = (knewCorrectAnswer) => {
     this.setState(prevState => ({
       numCorrectQuestions: prevState.numCorrectQuestions + (knewCorrectAnswer ? 1 : 0),
-      currentQuestionIndex: prevState.currentQuestionIndex + 1
+      currentQuestionIndex: prevState.currentQuestionIndex + 1,
+      showingQuestion: true
     }))
   }
   toggleQuestionAnswer = () => {
