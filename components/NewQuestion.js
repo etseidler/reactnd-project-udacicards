@@ -45,6 +45,7 @@ export default class NewQuestion extends Component {
     const { deckName } = this.props.navigation.state.params
     return (
       <View style={styles.container}>
+        <Text style={styles.text}>Please enter a question and an answer</Text>
         <CustomTextInput
           style={styles.textInput}
           placeholder="Question Title"
@@ -85,6 +86,11 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     paddingTop: 20
+  },
+  text: {
+    fontSize: 36,
+    textAlign: 'center',
+    marginBottom: 50
   },
   textInput: {
     fontSize: 16,
