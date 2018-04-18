@@ -57,7 +57,7 @@ export default class Quiz extends Component {
     const currentQuestion = deck.questions[currentQuestionIndex]
     const currentQuestionNumber = currentQuestionIndex + 1
     const numQuestions = questions.length
-    let innerContent;
+    let innerContent
     let buttonContent = null
     if (numQuestions === 0) {
       innerContent = (

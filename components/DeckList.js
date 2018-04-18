@@ -20,7 +20,7 @@ export default class DeckList extends Component {
     ]
   }
   componentWillUnmount() {
-    this.subs.forEach(sub => sub.remove());
+    this.subs.forEach(sub => sub.remove())
   }
   loadDecks = () => {
     getDecks().then((decks) => {

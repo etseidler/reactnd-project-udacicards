@@ -19,7 +19,7 @@ class Deck extends Component {
     }
   }
   componentDidMount() {
-    const deckName = this.props.navigation.state.params.entryId;
+    const deckName = this.props.navigation.state.params.entryId
     getDeck(deckName).then((deck) => {
       this.setState({ deck })
     })
@@ -28,7 +28,7 @@ class Deck extends Component {
     ]
   }
   componentWillUnmount() {
-    this.subs.forEach(sub => sub.remove());
+    this.subs.forEach(sub => sub.remove())
   }
   onDeleteDeck = () => {
     removeDeck(this.state.deck.title)
