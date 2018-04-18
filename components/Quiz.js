@@ -58,6 +58,7 @@ export default class Quiz extends Component {
     const currentQuestionNumber = currentQuestionIndex + 1
     const numQuestions = questions.length
     let innerContent;
+    let buttonContent = null
     if (numQuestions === 0) {
       innerContent = (
         <Text style={styles.atLeastOneQuestion}>
@@ -70,8 +71,12 @@ export default class Quiz extends Component {
       const scorePercentage = Math.round((numCorrectQuestions / numQuestions) * 100)
       innerContent = (
         <React.Fragment>
-          <Text>You completed the quiz!</Text>
-          <Text>{`Your score is ${scorePercentage}%`}</Text>
+          <Text style={styles.quizCompletion}>You completed the quiz!</Text>
+          <Text style={styles.quizCompletion}>{`Your score is ${scorePercentage}%`}</Text>
+        </React.Fragment>
+      )
+      buttonContent = (
+        <React.Fragment>
           <Button
             title="Restart Quiz"
             color={blue}
@@ -93,10 +98,15 @@ export default class Quiz extends Component {
           <Text style={styles.qaText}>
             {showingQuestion ? currentQuestion.question : currentQuestion.answer}
           </Text>
+          <View style={{ height: 30 }} />
           <Button
             title={showingQuestion ? 'Show Answer' : 'Show Question'}
             onPress={() => this.toggleQuestionAnswer()}
           />
+        </React.Fragment>
+      )
+      buttonContent = (
+        <React.Fragment>
           <Button
             title="Correct"
             color={green}
@@ -112,9 +122,14 @@ export default class Quiz extends Component {
     }
 
     return (
-      <View style={styles.container}>
-        {innerContent}
-      </View>
+      <React.Fragment>
+        <View style={styles.container}>
+          {innerContent}
+        </View>
+        <View style={styles.buttonContainer}>
+          {buttonContent}
+        </View>
+      </React.Fragment>
     )
   }
 }
@@ -122,9 +137,11 @@ export default class Quiz extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: white,
-    flex: 1,
+    flex: 3,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingLeft: 30,
+    paddingRight: 30
   },
   atLeastOneQuestion: {
     fontSize: 28
@@ -132,10 +149,20 @@ const styles = StyleSheet.create({
   qaText: {
     fontSize: 36
   },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    paddingBottom: 50,
+    backgroundColor: white
+  },
   progress: {
     position: 'absolute',
     top: 10,
     right: 10,
     fontSize: 18
+  },
+  quizCompletion: {
+    fontSize: 28
   }
 })
