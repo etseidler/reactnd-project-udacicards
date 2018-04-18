@@ -52,7 +52,7 @@ class Deck extends Component {
           titleStyle={{ fontSize: 36, marginBottom: 5 }}
           numQuestionsStyle={{ fontSize: 24 }}
         />
-        <View style={{ flex: 1, justifyContent: 'space-between' }}>
+        <View style={{ flex: 1, justifyContent: 'space-between', alignItems: 'center' }}>
           <Button
             title="Add Card"
             color={blue}
