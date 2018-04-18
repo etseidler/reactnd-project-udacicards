@@ -57,10 +57,10 @@ export default class Quiz extends Component {
     const currentQuestion = deck.questions[currentQuestionIndex]
     const currentQuestionNumber = currentQuestionIndex + 1
     const numQuestions = questions.length
-    let innerContent
+    let mainContent
     let buttonContent = null
     if (numQuestions === 0) {
-      innerContent = (
+      mainContent = (
         <Text style={styles.atLeastOneQuestion}>
           You must have at least one question to take the quiz!
         </Text>
@@ -69,7 +69,7 @@ export default class Quiz extends Component {
     else if (currentQuestionIndex === numQuestions) {
       this.disableNotificationForToday()
       const scorePercentage = Math.round((numCorrectQuestions / numQuestions) * 100)
-      innerContent = (
+      mainContent = (
         <React.Fragment>
           <Text style={styles.quizCompletion}>You completed the quiz!</Text>
           <Text style={styles.quizCompletion}>{`Your score is ${scorePercentage}%`}</Text>
@@ -90,7 +90,7 @@ export default class Quiz extends Component {
       )
     }
     else {
-      innerContent = (
+      mainContent = (
         <React.Fragment>
           <Text style={styles.progress}>
             {`${currentQuestionNumber} / ${numQuestions}`}
@@ -124,7 +124,7 @@ export default class Quiz extends Component {
     return (
       <React.Fragment>
         <View style={styles.container}>
-          {innerContent}
+          {mainContent}
         </View>
         <View style={styles.buttonContainer}>
           {buttonContent}
