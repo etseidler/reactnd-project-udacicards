@@ -29,7 +29,7 @@ export default class DeckList extends Component {
   }
   render() {
     if (this.state.isLoading) {
-      return <View style={styles.loadingContainer}><Text>Loading...</Text></View>
+      return null
     }
     const { decks } = this.state
     if (!decks || Object.keys(decks).length === 0) {
@@ -57,11 +57,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: white
-  },
-  loadingContainer: {
-    flex: 1,
-    backgroundColor: white,
-    justifyContent: 'center',
-    alignItems: 'center'
   }
 })
