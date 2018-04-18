@@ -144,7 +144,10 @@ const styles = StyleSheet.create({
     paddingRight: 30
   },
   atLeastOneQuestion: {
-    fontSize: 28
+    fontSize: 28,
+    paddingLeft: 30,
+    paddingRight: 30,
+    textAlign: 'center'
   },
   qaText: {
     fontSize: 36

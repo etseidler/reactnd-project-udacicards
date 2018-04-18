@@ -46,9 +46,16 @@ class Deck extends Component {
     const { navigate } = this.props.navigation
     return (
       <View style={{ backgroundColor: white, flex: 1, justifyContent: 'space-around' }}>
+        <View style={{ alignSelf: 'flex-end', paddingTop: 15, paddingRight: 15 }}>
+          <Button
+            title="Delete Deck"
+            onPress={this.onDeleteDeck}
+            color={red}
+          />
+        </View>
         <DeckSummary
           deck={this.state.deck}
-          containerStyle={{ flex: 2, borderBottomWidth: 0 }}
+          containerStyle={{ flex: 3, borderBottomWidth: 0 }}
           titleStyle={{ fontSize: 36, marginBottom: 5 }}
           numQuestionsStyle={{ fontSize: 24 }}
         />
@@ -61,11 +68,6 @@ class Deck extends Component {
           <Button
             title="Start Quiz"
             onPress={() => navigate('Quiz', { deckName: this.state.deck.title })}
-          />
-          <Button
-            title="Delete Deck"
-            onPress={this.onDeleteDeck}
-            color={red}
           />
           <View />
         </View>
