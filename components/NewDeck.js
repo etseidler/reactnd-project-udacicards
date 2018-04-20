@@ -33,7 +33,6 @@ export default class NewDeck extends Component {
       <View style={styles.container}>
         <Text style={styles.text}>What is the title of your new deck?</Text>
         <CustomTextInput
-          style={styles.textInput}
           placeholder="Deck Title"
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
@@ -62,12 +61,5 @@ const styles = StyleSheet.create({
     fontSize: 42,
     textAlign: 'center',
     marginBottom: 50
-  },
-  textInput: {
-    fontSize: 16,
-    borderWidth: 1,
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 30
   }
 })

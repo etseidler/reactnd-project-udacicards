@@ -1,17 +1,22 @@
 import React from 'react'
-import { TextInput } from 'react-native'
+import { TextInput, StyleSheet } from 'react-native'
 
 export default function CustomTextInput(props) {
-  const { style, placeholder, onChangeText, value, maxLength, autoFocus } = props
   return (
     <TextInput
-      style={style}
-      placeholder={placeholder}
-      onChangeText={onChangeText}
-      value={value}
-      autoFocus={autoFocus}
+      {...props}
+      style={styles.textInput}
       autoCorrect={false}
-      maxLength={maxLength}
     />
   )
 }
+
+const styles = StyleSheet.create({
+  textInput: {
+    fontSize: 16,
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 30
+  }
+})

@@ -47,7 +47,6 @@ export default class NewQuestion extends Component {
       <View style={styles.container}>
         <Text style={styles.text}>Please enter a question and an answer</Text>
         <CustomTextInput
-          style={styles.textInput}
           placeholder="Question Title"
           onChangeText={questionText => this.setState({ question: questionText })}
           value={question}
@@ -55,7 +54,6 @@ export default class NewQuestion extends Component {
           autoFocus
         />
         <CustomTextInput
-          style={styles.textInput}
           placeholder="Answer"
           onChangeText={answerText => this.setState({ answer: answerText })}
           value={this.state.answer}
@@ -91,13 +89,6 @@ const styles = StyleSheet.create({
     fontSize: 36,
     textAlign: 'center',
     marginBottom: 50
-  },
-  textInput: {
-    fontSize: 16,
-    borderWidth: 1,
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 30
   },
   cardAddedContainer: {
     flex: 1,
