@@ -37,6 +37,7 @@ export default class NewDeck extends Component {
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
           autoFocus
+          onSubmitEditing={() => this.state.text.trim() !== '' && this.onSubmit()}
           maxLength={INPUT_MAX_LENGTH}
         />
         <Button
