@@ -150,7 +150,8 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   qaText: {
-    fontSize: 36
+    fontSize: 36,
+    textAlign: 'center'
   },
   buttonContainer: {
     flex: 1,
