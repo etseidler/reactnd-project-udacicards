@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
   Text,
   KeyboardAvoidingView,
+  Keyboard,
   StyleSheet,
   Button,
   Alert
@@ -15,6 +16,7 @@ const INPUT_MAX_LENGTH = 40
 export default class NewDeck extends Component {
   state = { text: '' }
   onSubmit = () => {
+    Keyboard.dismiss()
     const deckName = this.state.text.trim()
     getDeck(deckName)
       .then((data) => {
