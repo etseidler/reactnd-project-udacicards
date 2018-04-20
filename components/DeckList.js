@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
-import { FlatList, View, Text, StyleSheet } from 'react-native'
-import { getDecks } from '../utils/helpers'
+import {
+  FlatList,
+  View,
+  Text,
+  StyleSheet,
+  Button
+} from 'react-native'
+import { getDecks, setDefaultDecks } from '../utils/helpers'
 import DeckListItem from './DeckListItem'
 import { white } from '../utils/colors'
 
@@ -22,6 +28,10 @@ export default class DeckList extends Component {
   componentWillUnmount() {
     this.subs.forEach(sub => sub.remove())
   }
+  onCreateSampleDecks = () => {
+    setDefaultDecks()
+      .then(this.loadDecks)
+  }
   loadDecks = () => {
     getDecks().then((decks) => {
       this.setState({ decks, isLoading: false })
@@ -35,7 +45,11 @@ export default class DeckList extends Component {
     if (!decks || Object.keys(decks).length === 0) {
       return (
         <View style={styles.noDecks}>
-          <Text style={{ fontSize: 24 }}>You have not created any decks</Text>
+          <Text style={{ fontSize: 24, marginBottom: 40 }}>You have not created any decks</Text>
+          <Button
+            title="Create sample decks"
+            onPress={this.onCreateSampleDecks}
+          />
         </View>
       )
     }
