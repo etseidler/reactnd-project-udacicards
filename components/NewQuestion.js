@@ -67,7 +67,6 @@ export default class NewQuestion extends Component {
           maxLength={ANSWER_MAX_LENGTH}
         />
         <Button
-          style={{ marginTop: 40 }}
           title="Submit"
           disabled={question.trim() === '' || answer.trim() === ''}
           onPress={() => this.onSubmit(deckName)}

@@ -40,7 +40,6 @@ export default class NewDeck extends Component {
           maxLength={INPUT_MAX_LENGTH}
         />
         <Button
-          style={{ marginTop: 40 }}
           title="Submit"
           disabled={this.state.text.trim() === ''}
           onPress={this.onSubmit}
