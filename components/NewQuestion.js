@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Button, Text } from 'react-native'
+import {
+  KeyboardAvoidingView,
+  Keyboard,
+  View,
+  StyleSheet,
+  Button,
+  Text
+} from 'react-native'
 import CustomTextInput from './CustomTextInput'
 import { white, green } from '../utils/colors'
 import { addCardToDeck } from '../utils/helpers'
@@ -27,6 +34,7 @@ export default class NewQuestion extends Component {
     this.timers = []
   }
   onSubmit = (deckName) => {
+    Keyboard.dismiss()
     const { question, answer } = this.state
     addCardToDeck(deckName, { question, answer })
       .then(() => {
@@ -44,14 +52,13 @@ export default class NewQuestion extends Component {
     const { question, answer, successVisible } = this.state
     const { deckName } = this.props.navigation.state.params
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="position">
         <Text style={styles.text}>Please enter a question and an answer</Text>
         <CustomTextInput
           placeholder="Question Title"
           onChangeText={questionText => this.setState({ question: questionText })}
           value={question}
           maxLength={QUESTION_MAX_LENGTH}
-          autoFocus
         />
         <CustomTextInput
           placeholder="Answer"
@@ -72,7 +79,7 @@ export default class NewQuestion extends Component {
             </Text>
           </View>
         }
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -91,7 +98,7 @@ const styles = StyleSheet.create({
     marginBottom: 50
   },
   cardAddedContainer: {
-    flex: 1,
+    height: 150,
     alignItems: 'center',
     justifyContent: 'center'
   },

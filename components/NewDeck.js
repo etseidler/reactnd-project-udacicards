@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
   Text,
-  View,
+  KeyboardAvoidingView,
   StyleSheet,
   Button,
   Alert
@@ -30,13 +30,12 @@ export default class NewDeck extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="position">
         <Text style={styles.text}>What is the title of your new deck?</Text>
         <CustomTextInput
           placeholder="Deck Title"
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
-          autoFocus
           onSubmitEditing={() => this.state.text.trim() !== '' && this.onSubmit()}
           maxLength={INPUT_MAX_LENGTH}
         />
@@ -46,7 +45,7 @@ export default class NewDeck extends Component {
           disabled={this.state.text.trim() === ''}
           onPress={this.onSubmit}
         />
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
